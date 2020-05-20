@@ -10,6 +10,7 @@ public class TodoItem implements Comparable<TodoItem> {
 	private String description;
 	private LocalDate deadline;
 	private boolean isDone;
+	private Person assignee;
 	
 	public TodoItem(int itemId, String title, String description, LocalDate deadline) {
 		this.itemId = itemId;
@@ -52,6 +53,14 @@ public class TodoItem implements Comparable<TodoItem> {
 
 	public int getItemId() {
 		return itemId;
+	}	
+
+	public Person getAssignee() {
+		return assignee;
+	}
+
+	public void setAssignee(Person assignee) {
+		this.assignee = assignee;
 	}
 
 	@Override

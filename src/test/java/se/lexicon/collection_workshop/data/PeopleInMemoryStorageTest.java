@@ -49,6 +49,7 @@ public class PeopleInMemoryStorageTest {
 		ulf.setTodoitems(new TreeSet<>(Arrays.asList(todoItems().get(1))));   //Buy cake
 		simon.setTodoitems(new TreeSet<>(Arrays.asList(todoItems().get(0)))); //Clean kitchen
 		
+		
 		this.erik = testObject.save(erik);
 		this.ulf = testObject.save(ulf);
 		this.simon = testObject.save(simon);		
@@ -57,7 +58,7 @@ public class PeopleInMemoryStorageTest {
 	@Test
 	public void assert_that_all_persons_are_successfully_added() {
 		int expectedSize = 3;
-		assertEquals(expectedSize, testObject.size());
+		assertEquals(expectedSize, testObject.size());		
 	}
 	
 	@Test

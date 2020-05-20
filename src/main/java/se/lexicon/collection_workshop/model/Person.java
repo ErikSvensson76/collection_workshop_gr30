@@ -42,15 +42,46 @@ public class Person {
 	}
 
 	public void setTodoitems(Collection<TodoItem> todoitems) {
-		if(this.todoitems == null) {
+		if(todoitems == null || todoitems.isEmpty()) {
 			todoitems = new TreeSet<>();
-		}
-		this.todoitems = todoitems;
+			for(TodoItem item : getTodoitems()) {
+				item.setAssignee(null);
+			}
+			this.todoitems = todoitems;
+		}else {
+			for(TodoItem item : getTodoitems()) {
+				removeTodoItem(item);
+			}
+			for(TodoItem item : todoitems) {
+				addTodoItem(item);
+			}
+		}		
 	}
 
 	public int getPersonId() {
 		return personId;
 	}
+	
+	//Bidirectional Relationship methods
+	public void addTodoItem(TodoItem item) {
+		if(todoitems == null) todoitems = new TreeSet<>();
+		if(item != null) {
+			if(todoitems.add(item)) {
+				item.setAssignee(this);
+			}			
+		}				
+	}
+	
+	public void removeTodoItem(TodoItem item) {
+		if(todoitems == null) todoitems = new TreeSet<>();
+		if(item != null) {
+			if(todoitems.remove(item)) {
+				item.setAssignee(null);
+			}
+		}
+	}	
+	
+	//----------------------------------
 
 	@Override
 	public int hashCode() {
