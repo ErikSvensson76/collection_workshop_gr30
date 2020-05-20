@@ -35,10 +35,16 @@ public class Person {
 	}
 
 	public Collection<TodoItem> getTodoitems() {
+		if(this.todoitems == null) {
+			this.todoitems = new TreeSet<>();
+		}
 		return todoitems;
 	}
 
 	public void setTodoitems(Collection<TodoItem> todoitems) {
+		if(this.todoitems == null) {
+			todoitems = new TreeSet<>();
+		}
 		this.todoitems = todoitems;
 	}
 
