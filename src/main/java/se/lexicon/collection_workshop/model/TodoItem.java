@@ -3,7 +3,7 @@ package se.lexicon.collection_workshop.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class TodoItem {
+public class TodoItem implements Comparable<TodoItem> {
 	
 	private int itemId;
 	private String title;
@@ -87,5 +87,10 @@ public class TodoItem {
 		builder.append(isDone);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int compareTo(TodoItem o) {
+		return deadline.compareTo(o.getDeadline());
 	}
 }
